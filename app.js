@@ -13,6 +13,16 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// custom middleware
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engin','pug');
+
+app.use(function(req,res,next){
+  console.log(req.url,'저도 미들웨어 입니다.');
+  next();
+});
+app.use(logger('dev'));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
